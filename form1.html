@@ -1,0 +1,78 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+			<title>Form Validation Example</title>
+		<style>
+			.error
+			{
+				color: red;
+			}
+		</style>
+	</head>
+		<body>
+			<table border=3 bgcolor=black>
+				<tr bgcolor="lightgray"><td colspan=2 align="center"><b>Form Validation Example</b>
+				<form id="myForm" method="post" onsubmit="return validateForm()">
+				<tr><td bgcolor="lightblue"><label for="name">Name:</label>
+				<td bgcolor="red"><input type="text" id="name" name="name" minlength="3" maxlength="20" required>
+					<span class="error" id="nameError"></span>
+				
+				<tr><td bgcolor="lightblue"><label for="email">Email:</label>
+					<td bgcolor="red"><input type="email" id="email" name="email" minlength="5" maxlength="20" required>
+					<span class="error" id="emailError"></span>
+				
+			<tr><td bgcolor="lightblue"><label for="password">Password:</label>
+					<td bgcolor="red"><input type="password" id="password" name="password" minlength="8" maxlength="12" required>
+					<span class="error" id="passwordError"></span>
+				
+			<tr><td colspan=2 align="center" bgcolor="red"><input type="submit" value="Submit">
+				</form>
+				</table>
+		<script>
+				function validateForm() 
+				{
+				var name = document.getElementById("name").value;
+				var password = document.getElementById("password").value;
+				var email = document.getElementById("email").value;
+
+				var nameError = document.getElementById("nameError");
+				var passwordError = document.getElementById("passwordError");
+				var emailError = document.getElementById("emailError");
+
+				var isValid = true;
+
+				if (name.length < 3 || name.length > 50) 
+				{
+				nameError.innerHTML = "Name must be between 3 and 50 characters";
+			isValid = false;
+				}
+				else 
+				{
+					nameError.innerHTML = "";
+				}
+
+			if (password.length < 8 || password.length > 20)
+			{
+			passwordError.innerHTML = "Password must be between 8 and 20 characters";
+				isValid = false;
+				}
+				else 
+				{
+			passwordError.innerHTML = "";
+				}
+
+			if (email.length < 5 || email.length > 50) 
+			{
+			emailError.innerHTML = "Email must be between 5 and 50 characters";
+			isValid = false;
+				}
+				else 
+				{
+			emailError.innerHTML = "";
+				}
+
+			return isValid;
+				}
+		</script>
+	</body>
+</html>
